@@ -1,9 +1,13 @@
-import hero from "../assets/hero.png";
+import hero from "../assets/burger.jpg";
 
 const Hero = () => {
   return (
-    <div>
-      <img src={hero} className="w-full max-h-[600px] object-cover" />
+    <div className="flex align-center justify-center">
+      <img
+        style={{ width: "100%" }}
+        src={hero}
+        className="w-full max-h-[600px] object-cover"
+      />
     </div>
   );
 };
