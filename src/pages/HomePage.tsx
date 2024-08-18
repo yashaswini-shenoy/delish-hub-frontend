@@ -27,8 +27,8 @@ const HomePage = () => {
   //   });
   // }, []);
 
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+  // const [loading, setLoading] = useState(true);
+  // const [error, setError] = useState("");
 
   useEffect(() => {
     const fetchLocation = async () => {
