@@ -8,7 +8,7 @@ const HomePage = () => {
   // const VisitorAPI = require("visitorapi");
 
   const navigate = useNavigate();
-  const [city, setCity] = useState("abcd");
+  const [city] = useState("abcd");
   const { results, isLoading } = useSearchRestaurants(
     {
       searchQuery: "",
@@ -30,43 +30,43 @@ const HomePage = () => {
   // const [loading, setLoading] = useState(true);
   // const [error, setError] = useState("");
 
-  useEffect(() => {
-    const fetchLocation = async () => {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-          async (position) => {
-            const { latitude, longitude } = position.coords;
-            try {
-              const response = await fetch(
-                `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`
-              );
-              const data = await response.json();
-              const city =
-                data.address.city ||
-                data.address.suburb ||
-                data.address.vilage ||
-                "City not found";
-              console.log("heyy", city);
-              setCity("Urwa Store");
-              setLoading(false);
-            } catch (err) {
-              setError("Error fetching city");
-              setLoading(false);
-            }
-          },
-          (err) => {
-            setError("Geolocation error: " + err.message);
-            setLoading(false);
-          }
-        );
-      } else {
-        setError("Geolocation is not supported by this browser.");
-        setLoading(false);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchLocation = async () => {
+  //     if (navigator.geolocation) {
+  //       navigator.geolocation.getCurrentPosition(
+  //         async (position) => {
+  //           const { latitude, longitude } = position.coords;
+  //           try {
+  //             const response = await fetch(
+  //               `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`
+  //             );
+  //             const data = await response.json();
+  //             const city =
+  //               data.address.city ||
+  //               data.address.suburb ||
+  //               data.address.vilage ||
+  //               "City not found";
+  //             console.log("heyy", city);
+  //             setCity("Urwa Store");
+  //             setLoading(false);
+  //           } catch (err) {
+  //             setError("Error fetching city");
+  //             setLoading(false);
+  //           }
+  //         },
+  //         (err) => {
+  //           setError("Geolocation error: " + err.message);
+  //           setLoading(false);
+  //         }
+  //       );
+  //     } else {
+  //       setError("Geolocation is not supported by this browser.");
+  //       setLoading(false);
+  //     }
+  //   };
 
-    // fetchLocation();
-  }, []);
+  //   // fetchLocation();
+  // }, []);
 
   useEffect(() => {
     console.log(results, isLoading, "heyyy");
